@@ -5,12 +5,19 @@ const vaciarCarritoBtn = document.querySelector("#vaciar-carrito"); //!btn vacia
 const listaCursos = document.querySelector("#lista-cursos"); //!lista de cursos
 let articulosCarrito = [];
 
+
 cargarEventListeners();
 function cargarEventListeners() {
   listaCursos.addEventListener("click", agregarCurso);
 
   // Elimina cursos del carrito
   carrito.addEventListener("click", eliminarCurso);
+
+  // Vaciar carrito
+  vaciarCarritoBtn.addEventListener('click', () => {
+      articulosCarrito = [];
+      limpiarHTML();
+  })
 }
 
 // Funciones
