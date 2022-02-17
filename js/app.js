@@ -8,6 +8,9 @@ let articulosCarrito = [];
 cargarEventListeners();
 function cargarEventListeners() {
   listaCursos.addEventListener("click", agregarCurso);
+
+  // Elimina cursos del carrito
+  carrito.addEventListener("click", eliminarCurso);
 }
 
 // Funciones
@@ -18,6 +21,21 @@ function agregarCurso(e) {
     leerDatosCurso(cursoSeleccionado);
   }
 }
+
+// Elimina el curso del carrito
+function eliminarCurso(e) {
+    
+    if (e.target.classList.contains('borrar-curso')) {
+        const cursoId = e.target.getAttribute('data-id');
+
+        // Elimina del arreglo de articulosCarrito por data-id
+        articulosCarrito = articulosCarrito.filter( curso => curso.id !== cursoId );
+
+        carritoHTML(); //llama función de imprimir html
+        console.log(articulosCarrito);
+    }
+}
+
 
 function leerDatosCurso(curso) {
   // crear objeto con datos
@@ -31,25 +49,22 @@ function leerDatosCurso(curso) {
   };
 
   //Revisa si un elemento si un elemento ya existe en el carrito
-  const existe = articulosCarrito.some( curso => curso.id === infoCurso.id);
+  const existe = articulosCarrito.some((curso) => curso.id === infoCurso.id);
   if (existe) {
-      //actualizar cantidad
-      const cursos = articulosCarrito.map( curso => {
-        if (curso.id === infoCurso.id) {
-            curso.cantidad++;
-            return curso; //retorna objeto actualizado
-        } else {
-            return curso; //retorna objetos no duplicados
-        }
-      });
-      articulosCarrito = [...cursos];
+    //actualizar cantidad
+    const cursos = articulosCarrito.map((curso) => {
+      if (curso.id === infoCurso.id) {
+        curso.cantidad++;
+        return curso; //retorna objeto actualizado
+      } else {
+        return curso; //retorna objetos no duplicados
+      }
+    });
+    articulosCarrito = [...cursos];
   } else {
-       //Agrega Elementos al arreglo
-        articulosCarrito = [...articulosCarrito, infoCurso];
+    //Agrega Elementos al arreglo
+    articulosCarrito = [...articulosCarrito, infoCurso];
   }
-
-
-
   carritoHTML();
 }
 
