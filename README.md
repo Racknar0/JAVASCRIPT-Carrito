@@ -16,6 +16,6 @@ Proyecto creado usando las tecnologías HTML, SCC, JAVASCRIPT poniendo en practi
       height="100" /> </a>
 
 -  Visualización :-
-<a href="#" target="_blank"
-    rel="noreferrer">#</a>
+<a href="carritojs11.netlify.app" target="_blank"
+    rel="noreferrer">carritojs11.netlify.app</a>
 
